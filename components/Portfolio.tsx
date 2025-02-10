@@ -405,15 +405,15 @@ const Portfolio = () => {
       {/* Footer */}
       <footer className="py-8 border-t dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <p>© 2025 Pranav Khumbhalkar</p>
+          <p>© 2025 Pranav Kumbhalkar</p>
           <div className="flex gap-4">
-            <motion.a whileHover={{ scale: 1.1 }} href="#" className="hover:text-blue-500">
+            <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/Pran9/pranav_portfolio" className="hover:text-blue-500">
               <Github size={20} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.1 }} href="#" className="hover:text-blue-500">
+            <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/pranav-kumbhalkar-7b2128281/" className="hover:text-blue-500">
               <Linkedin size={20} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.1 }} href="#" className="hover:text-blue-500">
+            <motion.a whileHover={{ scale: 1.1 }} href="mailto:pranavkumbhalkar08@gmail.com" className="hover:text-blue-500">
               <Mail size={20} />
             </motion.a>
           </div>
