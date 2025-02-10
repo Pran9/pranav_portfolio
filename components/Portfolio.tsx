@@ -19,8 +19,64 @@ import {
 } from "lucide-react"
 import { motion } from "framer-motion"
 
+interface AnimatedBackgroundProps {
+  darkMode: boolean;
+}
+
+interface MovingBlobProps {
+  color: string;
+  delay: number;
+}
+
+
+interface FloatingIconProps {
+  Icon: React.ElementType;
+  delay: number;
+  position: {
+    top: string;
+    left: string;
+  };
+}
+
+
+interface CustomCursorProps {
+  mousePosition: { x: number; y: number };
+  darkMode: boolean;
+}
+
+
+interface LogoProps {
+  darkMode: boolean;
+}
+
+
+interface SectionHeaderProps {
+  title: string;
+  subtitle?: string;
+}
+
+
+interface SkillCardProps {
+  title: string;
+  skills: string[];
+  icon: React.ElementType;
+}
+
+
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  demo: string;
+  github: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
 // Animated Background Component
-const AnimatedBackground = ({ darkMode }) => {
+const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ darkMode }) => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {[...Array(3)].map((_, i) => (
@@ -47,7 +103,7 @@ const AnimatedBackground = ({ darkMode }) => {
 }
 
 // Moving Blob Component
-const MovingBlob = ({ color, delay }) => (
+const MovingBlob: React.FC<MovingBlobProps> = ({ color, delay }) => (
   <motion.div
     className="absolute opacity-70 blur-3xl"
     style={{
@@ -70,7 +126,7 @@ const MovingBlob = ({ color, delay }) => (
 )
 
 // Floating Icon Component
-const FloatingIcon = ({ Icon, delay, position }) => (
+const FloatingIcon: React.FC<FloatingIconProps> = ({ Icon, delay, position }) => (
   <motion.div
     className="absolute text-gray-400 opacity-10"
     style={position}
@@ -91,7 +147,7 @@ const FloatingIcon = ({ Icon, delay, position }) => (
 )
 
 // Custom Cursor Component
-const CustomCursor = ({ mousePosition, darkMode }) => (
+const CustomCursor: React.FC<CustomCursorProps> = ({ mousePosition, darkMode }) =>(
   <motion.div
     className="fixed w-8 h-8 rounded-full pointer-events-none mix-blend-difference z-50"
     animate={{ x: mousePosition.x - 16, y: mousePosition.y - 16 }}
@@ -103,8 +159,9 @@ const CustomCursor = ({ mousePosition, darkMode }) => (
   />
 )
 
+
 // Logo Component
-const Logo = ({ darkMode }) => (
+const Logo: React.FC<LogoProps> = ({ darkMode }) => (
   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="relative group">
     <motion.div className="relative flex items-center gap-2" whileHover={{ scale: 1.05 }}>
       <div className="relative">
@@ -125,7 +182,7 @@ const Logo = ({ darkMode }) => (
 )
 
 // Section Header Component
-const SectionHeader = ({ title, subtitle }) => (
+const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) =>  (
   <div className="text-center mb-16">
     <motion.h2
       initial={{ opacity: 0, y: 20 }}
@@ -149,7 +206,7 @@ const SectionHeader = ({ title, subtitle }) => (
 )
 
 // Skill Card Component
-const SkillCard = ({ title, skills, icon: Icon }) => (
+const SkillCard: React.FC<SkillCardProps> = ({ title, skills, icon: Icon }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +228,7 @@ const SkillCard = ({ title, skills, icon: Icon }) => (
 )
 
 // Project Card Component
-const ProjectCard = ({ project }) => (
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -206,12 +263,14 @@ const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+  
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+  
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -284,7 +343,7 @@ const Portfolio = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl font-bold mb-6"
             >
-              Hey, I'm Pranav Kumbhalkar
+              {"Hey, I'm Pranav Kumbhalkar"}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
