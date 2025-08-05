@@ -175,7 +175,7 @@ const Logo: React.FC<LogoProps> = ({ darkMode }) => (
         </div>
       </div>
       <div className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        Pranav Khumbhalkar
+        Pranav Kumbhalkar
       </div>
     </motion.div>
   </motion.div>
